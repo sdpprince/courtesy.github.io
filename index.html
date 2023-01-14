@@ -20,9 +20,9 @@
 				border: #ccc 1px solid;
 				margin:  10vh auto;
 				text-align: center;
-				background-color: #fff9ff;
+				background-color: #ffe7fd;
 				opacity: .95;
-				border-radius:30px;
+				border-radius:30px 30px;
 			}
 
 			#dataTable {
@@ -55,11 +55,29 @@
 				padding: 7px;
 				font-size: 33px;
 			}
+			.welcome{
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				z-index: 999;
+				background-color: pink;
+				width: 30vw;
+				height: 20vh;
+				margin: auto;
+				text-align: center;
+				opacity: .9;
+				display: none;
+				padding: 20px;
+				border-radius: 51% 49% 50% 50% / 25% 25% 75% 75% ;
+			}
 		</style>
 
 	</head>
 	<body>
-
+		<div class="welcome">
+			<h1>欢迎，哈哈哈~</h1>
+		</div>
 		<section class="Hui-article-box section">
 			<h1 class="title">姐结婚礼部数据</h1>
 			<div class="mt-20">
@@ -99,9 +117,9 @@
 		}
 		$(function() {
 			arr2.forEach((obj, index) => {
-				if (index == 5) {
-					console.log(arr2);
-				}
+				// if (index == 5) {
+				// 	console.log(arr2);
+				// }
 				let str = `<tr class="text-c">
 								<td>${index+1}</td>
 								<td>${obj.name}</td>
@@ -111,7 +129,31 @@
 				$('#dataTable').append(str)
 			})
 			dataTableSort()
+			
+			$('#DataTables_Table_0_filter').attr('title','这里是对下面数据进行查询筛选的')
+			
+			$('#DataTables_Table_0_length').attr('title','这里是对下面数据进行排序的')
+			
+			window.addEventListener('load',function(){
+				console.log(123);
+				if(localStorage.getItem('loadStartData')){
+					console.log('有');
+					$('.welcome').hide()
+				}else{
+					localStorage.setItem('loadStartData','notStartData')
+					console.log('notStartData');
+					$('.welcome').show()
+					setTimeout(()=>{
+						$('.welcome').hide()
+					},3000)
+					
+				}
+			})
+			
+			
+			
 		})
+		
 	</script>
 
 </html>
