@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="datatables/1.10.15/dataTables.bootstrap4.min.css">
+
+		<style type="text/css">
+			body {
+				--titleColor: red;
+				--size: 30px;
+				font-size: 30px;
+				background-image: url(img/结婚.png);
+			}
+
+			.section {
+				width: 80%;
+				border: #ccc 1px solid;
+				margin: auto;
+				text-align: center;
+				background-color: #fff9ff;
+				opacity: .95;
+				border-radius: 0 0 30px 30px;
+			}
+
+			#dataTable {
+				width: 100%;
+				border: 1px;
+				font-size: var(--size);
+			}
+
+			.mui-search {
+				padding: var(--size);
+			}
+
+			.text-c {
+				background-color: var(--titleColor);
+				font-size: var(--size);
+			}
+
+			.title {
+				color: var(--titleColor);
+				letter-spacing: 1.5em;
+				margin-left: 1.5em;
+				font-weight: bold;
+			}
+
+			.text-c th {
+				text-align: center !important;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<section class="Hui-article-box section">
+			<h1 class="title">姐结婚礼部数据</h1>
+			<div class="mt-20">
+				<table class="table table-border table-bordered table-hover table-bg table-sort">
+					<thead>
+						<tr class="text-c">
+							<th width="5">序号</th>
+							<th width="30">名字</th>
+							<th width="20">金额</th>
+							<th width="40">地址</th>
+						</tr>
+					</thead>
+					<tbody id="dataTable">
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<!-- 框架dataTables -->
+	<script src="datatables/1.10.15/jquery.dataTables.min.js"></script>
+	<!-- bootstrap的框架dataTables -->
+	<script src="datatables/1.10.15/dataTables.bootstrap.min.js"></script>
+
+	<script src="js/test.js"></script>
+	<script type="text/javascript">
+		function dataTableSort() {
+			var table = $('.table-sort').DataTable({
+				"aaSorting": [
+					[1, "desc"]
+				], //默认第几个排序
+				scrollY: '60vh',
+				"bStateSave": true, //状态保存
+				paging: true
+			});
+		}
+		$(function() {
+			arr2.forEach((obj, index) => {
+				if (index == 5) {
+					console.log(arr2);
+				}
+				let str = `<tr class="text-c">
+								<td>${index+1}</td>
+								<td>${obj.name}</td>
+								<td>${obj.money} 元</td>
+								<td>${obj.address}</td>
+							</tr>`
+				$('#dataTable').append(str)
+			})
+			dataTableSort()
+		})
+	</script>
+
+</html>
