@@ -16,9 +16,9 @@
 			}
 
 			.section {
-				width: 80%;
+				width: 95%;
 				border: #ff4a4a 1rem solid;
-				margin:  10vh auto;
+				margin:  2vh auto;
 				text-align: center;
 				background-color: #ffeeff;
 				opacity: .95;
@@ -79,6 +79,10 @@
 				padding: 20px;
 				border-radius: 51% 49% 50% 50% / 25% 25% 75% 75% ;
 			}
+			div.dataTables_wrapper div.dataTables_filter input {
+			    margin-left: -1.5em;
+			    display:block;
+				}
 		</style>
 
 	</head>
@@ -93,8 +97,8 @@
 					<thead>
 						<tr class="text-c">
 							<th width="5">序号</th>
-							<th width="30">名字</th>
-							<th width="20">金额</th>
+							<th width="50">名字</th>
+							<th width="10">金额</th>
 							<th width="40">地址</th>
 						</tr>
 					</thead>
@@ -118,7 +122,7 @@
 				"aaSorting": [
 					[1, "desc"]
 				], //默认第几个排序
-				scrollY: '60vh',
+				scrollY: '55vh',
 				"bStateSave": true, //状态保存
 				paging: true
 			});
